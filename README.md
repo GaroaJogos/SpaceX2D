@@ -5,17 +5,11 @@
 
 #Integrantes:
 #Ricardo Alves Da Silva
-#RA: 1802191
-
 #Thales Freitas De Camargo 
-#RA: 1801540
-
-#Lucas Silva E Silva
-#RA:
+#Lucas Soares De Souza Amorin
 
 #1º Semestre de 2019
 
- 
 #Descrição
 
 #O Space X é um jogo do tipo space shooter 2D (popularmente conhecido em nosso país como jogo de navinha) de visão lateral e jogabilidade side scroller inspirado em clássicos do mesmo gênero dos anos 90 como Sagaia, R-Type, Fantasy Zone, Thunder Force, Truxton, Gley Lancer e outros.
