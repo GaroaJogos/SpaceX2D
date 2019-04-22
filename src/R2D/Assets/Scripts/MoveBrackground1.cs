@@ -18,7 +18,7 @@ public class MoveBrackground1 : MonoBehaviour
         larguraTela = alturaTela / Screen.height * Screen.width;
 
         Vector2 novaEscala = transform.localScale;
-        novaEscala.x = (larguraTela / larguraImagem) + 0.033f;
+        novaEscala.x = (larguraTela / larguraImagem) + 0.5f;
         novaEscala.y = alturaTela / alturaImagem;
 
         this.transform.localScale = novaEscala;

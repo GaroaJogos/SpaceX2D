@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        texto.transform.position =
+            new Vector3(Screen.width - texto.rectTransform.rect.width/2, texto.rectTransform.rect.height);
+
         texto.text = "Pontuação: 0";
         Moveinimigo.texto = texto;
         InvokeRepeating("CriaInimigo", 1f, 1.5f);
