@@ -13,7 +13,7 @@ public class Moveinimigo : MonoBehaviour
     void Start()
     {
         texto.text = "Pontuação: " + (count * 50);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-13, 0);
     }
 
     // Update is called once per frame
