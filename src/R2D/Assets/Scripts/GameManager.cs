@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && (!working))
         {
+            Moveinimigo.count = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             working = true;
         }

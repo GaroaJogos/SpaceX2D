@@ -10,12 +10,6 @@ public class DestroyShot : MonoBehaviour
         Invoke("Destroir", 10);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Destroir()
     {
         Destroy(this.gameObject);

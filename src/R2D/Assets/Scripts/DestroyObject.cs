@@ -10,12 +10,6 @@ public class DestroyObject : MonoBehaviour
         Invoke("Destroir", 3);
     }
 
-// Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Destroir()
     {
         Destroy(this.gameObject);

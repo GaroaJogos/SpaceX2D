@@ -13,12 +13,6 @@ public class Sounds : MonoBehaviour
         music = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public static void stopMusic()
     {
         music.Stop();

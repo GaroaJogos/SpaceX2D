@@ -7,6 +7,13 @@ public class MoveHero : MonoBehaviour
 {
     float speed = 8;
     Rigidbody2D corpoJogador;
+
+    Sprite heroiCima;
+    Sprite heroiBaixo;
+    SpriteRenderer spriteHeroi;
+    Sprite normalSpriteAnimation;
+    Animator animator;
+
     public Text warn;
 
     public GameObject shot;
@@ -18,6 +25,12 @@ public class MoveHero : MonoBehaviour
     void Start()
     {
         corpoJogador = GetComponent<Rigidbody2D>();
+        spriteHeroi = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
+        heroiCima = Resources.Load<Sprite>("NaveHeroiCima");
+        heroiBaixo = Resources.Load<Sprite>("NaveHeroiBaixo");
+        normalSpriteAnimation = Resources.Load<Sprite>("NaveHeroi1_2");
         warn.enabled = false;
     }
 
@@ -41,22 +54,34 @@ public class MoveHero : MonoBehaviour
             CriaTiro();
         }
 
-        
-        //if (corpoJogador.position.x > 0)
-        //{
-            corpoJogador = GetComponent<Rigidbody2D>();
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            corpoJogador.velocity = movement * speed;
 
-            corpoJogador.position = new Vector3
-           (
-               Mathf.Clamp(corpoJogador.position.x, -9, 9),
-               Mathf.Clamp(corpoJogador.position.y, -5, 5),
-               0.0f
-           );
-        //}
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        corpoJogador.velocity = movement * speed;
+
+        corpoJogador.position = new Vector3
+        (
+            Mathf.Clamp(corpoJogador.position.x, -9, 9),
+            Mathf.Clamp(corpoJogador.position.y, -5, 5),
+            0.0f
+        );
+
+        if (moveVertical > 0)
+        {
+            spriteHeroi.sprite = heroiCima;
+            animator.enabled = false;
+        }
+        else if (moveVertical < 0)
+        {
+            spriteHeroi.sprite = heroiBaixo;
+            animator.enabled = false;
+        }
+        else
+        {
+            spriteHeroi.sprite = normalSpriteAnimation;
+            animator.enabled = true;
+        }
 
     }
 
