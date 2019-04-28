@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
         texto.text = "Pontuação: 0";
         Moveinimigo.texto = texto;
-        InvokeRepeating("CriaInimigo", 1f, 1.5f);
+        InvokeRepeating("CriaInimigo", 1f, 2f);
     }
 
     // Update is called once per frame
@@ -38,7 +38,13 @@ public class GameManager : MonoBehaviour
         {
             float alturaAleatoria = 10f * Random.value - 5;
 
+            if (alturaAleatoria < -3.5)
+                alturaAleatoria = -3.5f;
+            else if (alturaAleatoria > 3)
+                alturaAleatoria = 3;
+
             GameObject novoInimigo = Instantiate(NaveInimigo1);
+            //novoInimigo.transform.position = new Vector2(15f, alturaAleatoria);
             novoInimigo.transform.position = new Vector2(15f, alturaAleatoria);
         }
     }
