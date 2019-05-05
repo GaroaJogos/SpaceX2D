@@ -10,6 +10,9 @@ public class Moveinimigo : MonoBehaviour
     public GameObject explosion;
     private int dano = 0;
     private SpriteRenderer inimigoSprite;
+    private Color spriteColor;
+    private float flashTime = 0.05f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,7 @@ public class Moveinimigo : MonoBehaviour
         texto.text = "Pontuação: " + (count * 50);
         GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0);
         inimigoSprite = GetComponent<SpriteRenderer>();
+        spriteColor = inimigoSprite.color;
     }
 
     // Update is called once per frame
@@ -30,28 +34,34 @@ public class Moveinimigo : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        ++count;
+
+        StartCoroutine(Flash());
+
         ++dano;
-        texto.text = "Pontuação: " + (count * 50);
-
-        switch(dano)
+        
+        if (dano == 3)
         {
-            case 1:
-                inimigoSprite.color = Color.yellow;
-                break;
+            ++count;
+            texto.text = "Pontuação: " + (count * 50);
 
-            case 2:
-                inimigoSprite.color = Color.red;
-                break;
-
-            case 3:
-                GameObject explosao = Instantiate(
+            GameObject explosao = Instantiate(
                     explosion,
                     this.transform.position,
                     this.transform.rotation);
 
-                Destroy(this.gameObject);
-                break;
+            Destroy(this.gameObject);
         }
     }
+
+    IEnumerator Flash()
+    {
+        for (int n = 0; n < 2; n++)
+        {
+            inimigoSprite.color = Color.red;
+            yield return new WaitForSeconds(flashTime);
+            inimigoSprite.color = spriteColor;
+            yield return new WaitForSeconds(flashTime);
+        }
+    }
+
 }
