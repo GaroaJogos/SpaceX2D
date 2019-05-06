@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject NaveInimigo1;
     public Text texto;
     public static bool working = true;
-    
+    private AudioSource gameOverAudio;
+    private bool playGameOerSound = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameOverAudio = GetComponent<AudioSource>();
         texto.transform.position =
             new Vector3(Screen.width - texto.rectTransform.rect.width/2, texto.rectTransform.rect.height);
 
@@ -30,6 +33,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             working = true;
         }
+
+        if((!working) && (playGameOerSound))
+        {
+            gameOverAudio.Play();
+            playGameOerSound = false;
+        }
+
     }
 
     void CriaInimigo()
