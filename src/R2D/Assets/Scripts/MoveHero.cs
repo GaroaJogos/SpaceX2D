@@ -18,7 +18,7 @@ public class MoveHero : MonoBehaviour
 
     public GameObject shot;
     public GameObject explosion;
-    private float fireRate = 0.35f;
+    private float fireRate = 0.25f;
     private float nextFire;
 
     // Start is called before the first frame update

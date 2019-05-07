@@ -11,14 +11,14 @@ public class Moveinimigo : MonoBehaviour
     private int dano = 0;
     private SpriteRenderer inimigoSprite;
     private Color spriteColor;
-    private float flashTime = 0.05f;
+    private float flashTime = 0.07f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         texto.text = "Pontuação: " + (count * 50);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-9, 0);
         inimigoSprite = GetComponent<SpriteRenderer>();
         spriteColor = inimigoSprite.color;
     }
