@@ -18,7 +18,7 @@ public class Moveinimigo : MonoBehaviour
     void Start()
     {
         texto.text = "Pontuação: " + (count * 50);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-9, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-11, 0);
         inimigoSprite = GetComponent<SpriteRenderer>();
         spriteColor = inimigoSprite.color;
     }
