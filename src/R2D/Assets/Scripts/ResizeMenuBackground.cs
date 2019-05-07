@@ -30,7 +30,8 @@ public class ResizeMenuBackground : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("SampleScene");
+            Debug.Log("ENter");
+            SceneManager.LoadScene("Fase1Teste");
         }
     }
 
