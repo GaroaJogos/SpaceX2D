@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\DestroyObject.cs" />
     <Compile Include="Assets\Scripts\DestroyShot.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MoveBackground.cs" />
     <Compile Include="Assets\Scripts\MoveBombardeiro.cs" />
     <Compile Include="Assets\Scripts\MoveBrackground1.cs" />
     <Compile Include="Assets\Scripts\MoveHero.cs" />
