@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\MoveTiro.cs" />
     <Compile Include="Assets\Scripts\ResizeMenuBackground.cs" />
     <Compile Include="Assets\Scripts\Sounds.cs" />
+    <Compile Include="Assets\Scripts\ViewAreaControl.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/UseR/Documents/GaroaJogos/SpaceX2D/src/R2D/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
