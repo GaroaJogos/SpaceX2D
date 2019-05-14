@@ -87,6 +87,9 @@ public class MoveHero : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.tag == "ViewArea")
+            return;
+
         if (col.gameObject.name != "tiro")
         {
             this.enabled = false;
