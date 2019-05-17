@@ -42,7 +42,6 @@ public class MoveHero : MonoBehaviour
             new Vector3(corpoJogador.transform.localPosition.x + 1, corpoJogador.transform.localPosition.y, 0.0f), 
             corpoJogador.transform.rotation);
         tiro.name = "tiro";
-
     }
 
     // Update is called once per frame

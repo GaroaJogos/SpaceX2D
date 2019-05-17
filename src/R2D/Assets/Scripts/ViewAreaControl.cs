@@ -16,8 +16,7 @@ public class ViewAreaControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log(ok);
+    {   
     }
 
     void OnTriggerEnter2D(Collider2D col)

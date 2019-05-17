@@ -20,8 +20,10 @@ public class MoveTiro : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name != "NaveHeroi1")
-            Destroy(this.gameObject);
+        if ( (col.name == "NaveHeroi1") || (col.name == "ViewArea") || ((col.name == "finishPoint")) )
+            return;
+
+        Destroy(this.gameObject);
     }
 
 }

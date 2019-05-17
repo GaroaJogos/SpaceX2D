@@ -9,7 +9,7 @@ public class MoveBrackground1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-4f, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-0.4f, 0);
     }
 
     // Update is called once per frame

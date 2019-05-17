@@ -26,6 +26,10 @@ public class Moveinimigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
+
         if (transform.position.x < -25)
         {
             Destroy(this.gameObject);
@@ -34,7 +38,9 @@ public class Moveinimigo : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-
+        if( (col.name == "ViewArea") || ((col.name == "finishPoint")) )
+            return;
+        
         StartCoroutine(Flash());
 
         ++dano;
