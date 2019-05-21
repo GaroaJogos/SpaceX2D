@@ -1,10 +1,16 @@
 sceneSetups:
 - path: Assets/Scenes/ImpactaLogo.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/Scenes/TransicaoCena01.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/Fase1Teste.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/TransicaoCena02.unity
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scenes/Level02.unity
   isLoaded: 0
   isActive: 0
