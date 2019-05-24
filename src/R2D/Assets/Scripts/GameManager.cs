@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject NaveInimigo1;
     public Text texto;
+    public Image scoreBar;
     public static bool working = true;
     private AudioSource gameOverAudio;
     private bool playGameOerSound = true;
@@ -16,8 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameOverAudio = GetComponent<AudioSource>();
-        texto.transform.position =
-            new Vector3(Screen.width - texto.rectTransform.rect.width/2, texto.rectTransform.rect.height);
+       
 
         texto.text = "Pontuação: 0";
         Moveinimigo.texto = texto;

@@ -485,6 +485,7 @@ MonoBehaviour:
   NaveInimigo1: {fileID: 7677281961307169550, guid: b3088a359ffd987458b7f5cf30cb0e7b,
     type: 3}
   texto: {fileID: 457931809}
+  scoreBar: {fileID: 0}
 --- !u!1 &1128542884
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 4859472689826208945, guid: 7135eeaf1d1e525408954a88f721e410,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 100
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 4859472689826208945, guid: 7135eeaf1d1e525408954a88f721e410,
         type: 3}
@@ -887,7 +888,7 @@ PrefabInstance:
     - target: {fileID: 4859472689826208945, guid: 7135eeaf1d1e525408954a88f721e410,
         type: 3}
       propertyPath: m_FontData.m_FontStyle
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4859472690574127503, guid: 7135eeaf1d1e525408954a88f721e410,
         type: 3}

@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/ImpactaLogo.unity
     guid: ee86e2542cad53445a3d6f85a2ab35f2
   - enabled: 1
+    path: Assets/Scenes/TransicaoCena01.unity
+    guid: 3af1f9128bfa8ea4c8fc1ba3e925ff87
+  - enabled: 1
     path: Assets/Scenes/Fase1Teste.unity
     guid: 968de5e29efa4f84ca2d398052244dc9
+  - enabled: 1
+    path: Assets/Scenes/TransicaoCena02.unity
+    guid: 89a258fb86741664880b1ae8e1a3371f
+  - enabled: 1
+    path: Assets/Scenes/Level02.unity
+    guid: 6641b7346238d364fb19c5d4e0681529
   m_configObjects: {}
