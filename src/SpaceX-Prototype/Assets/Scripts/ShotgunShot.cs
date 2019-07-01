@@ -47,30 +47,4 @@ public class ShotgunShot : MonoBehaviour
         }
 
     }
-
-   /* public void ShotgunShoot()
-    {
-        shotgunShell[0].transform.Translate(Vector3.right + Vector3.up * 2 * _speed * Time.deltaTime);
-        shotgunShell[1].transform.Translate(Vector3.right + Vector3.up * _speed * Time.deltaTime);
-        shotgunShell[2].transform.Translate(Vector3.right * 3 * _speed * Time.deltaTime);
-        shotgunShell[3].transform.Translate(Vector3.right + Vector3.down * _speed  * Time.deltaTime);
-        shotgunShell[4].transform.Translate(Vector3.right + Vector3.down * 2 * _speed * Time.deltaTime);
-        if (transform.position.x >= 10.0f && transform.position.y >= 6)
-        {
-            if (transform.parent != null)
-            {
-                Destroy(transform.parent.gameObject);
-            }
-
-            Destroy(this.gameObject);
-        }
-        else if (transform.position.x <= -10.0f && transform.position.y <= -6)
-        {
-            if (transform.parent != null)
-            {
-                Destroy(transform.parent.gameObject);
-            }
-
-            Destroy(this.gameObject);
-        }*/
 }

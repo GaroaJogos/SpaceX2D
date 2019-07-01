@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 public class MiniBoss : MonoBehaviour
 {
     public int bossLife;
+    public bool bossAtack = false;
+    public bool isAlive = true;
     private UImanager _uimanager;
+    private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
+
     [SerializeField]
     private GameObject _explosion;
 
@@ -16,8 +21,11 @@ public class MiniBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossLife = 250;
         _uimanager = GameObject.Find("Canvas").GetComponent<UImanager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        bossLife = 250;
+        bossAtack = true;
         StartCoroutine(BossShotSpawn());
     }
 
@@ -34,46 +42,76 @@ public class MiniBoss : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if(bossLife > 0)
         {
-            Player player = other.GetComponent<Player>();
+            if (other.tag == "Player")
+            {
+                Player player = other.GetComponent<Player>();
 
-            if (player != null)
-            {
-                player.Damage();
+                if (player != null)
+                {
+                    player.Damage();
+                }
+                Instantiate(_explosion, transform.position, Quaternion.identity);
             }
-            Instantiate(_explosion, transform.position, Quaternion.identity);
+            else if (other.tag == "Laser")
+            {
+                if (other.transform.parent != null)
+                {
+                    Destroy(other.transform.parent.gameObject);
+                }
+                Destroy(other.gameObject);
+                Instantiate(_explosion, transform.position, Quaternion.identity);
+                _uimanager.UpdateScore();
+                bossLife--;
+                _BossDead();
+            }
         }
-        else if (other.tag == "Laser")
+    }
+
+    public IEnumerator BossShotSpawn()
+    {
+        while (bossAtack)
         {
-            if (other.transform.parent != null)
-            {
-                Destroy(other.transform.parent.gameObject);
-            }
-            Destroy(other.gameObject);
-            Instantiate(_explosion, transform.position, Quaternion.identity);
-            _uimanager.UpdateScore();
-            bossLife--;
-            _BossDead();           
+            _BossAttack();
+            yield return new WaitForSeconds(5.0f);
         }
     }
 
     public void _BossDead()
     {
-        if (bossLife <= 0)
+        if ( (bossLife <= 0) && isAlive)
         {
-            Instantiate(_explosion, transform.position, Quaternion.identity);
-            SceneManager.LoadScene("TransitionToLevel02");
-            //Destroy(this.gameObject);
-        }       
+            bossAtack = false;
+            isAlive = false;
+            StartCoroutine(BossDead());
+        }
     }
 
-    public IEnumerator BossShotSpawn()
+    private IEnumerator BossDead()
     {
-        while (true)
+        Color color = spriteRenderer.color;
+        audioSource.Stop();
+        for (int i = 0; i < 6; ++i)
         {
-            _BossAttack();
-            yield return new WaitForSeconds(5.0f);
+            spriteRenderer.color = Color.red;
+            Vector3 position = transform.position;
+            Instantiate(_explosion, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.350f);
+
+            spriteRenderer.color = color;
+            Instantiate(_explosion, position * -0.001f, Quaternion.identity);
+            yield return new WaitForSeconds(.350f);
+
+            spriteRenderer.color = Color.red;
+            Instantiate(_explosion, Vector3.up * -0.3f, Quaternion.identity);
+            yield return new WaitForSeconds(.350f);
+
+            spriteRenderer.color = color;
+            Instantiate(_explosion, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.350f);
         }
+
+        SceneManager.LoadScene("TransitionToLevel02");
     }
 }

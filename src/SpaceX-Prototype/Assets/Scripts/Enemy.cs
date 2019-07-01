@@ -6,9 +6,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 5.0f;
+
     [SerializeField]
     private GameObject _explosion;
+
     private UImanager _uimanager;
+    private MiniBoss miniBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,18 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject miniBossGameObject = GameObject.Find("Mini-Boss_0(Clone)");
+        if (miniBossGameObject != null)
+        {
+            miniBoss = miniBossGameObject.GetComponent<MiniBoss>();
+            if (miniBoss != null && !miniBoss.isAlive)   
+            {
+                Instantiate(_explosion, transform.position, Quaternion.identity);
+                _uimanager.UpdateScore();
+                Destroy(this.gameObject);
+            }
+        }
+
         _Movement();
     }
 
@@ -35,7 +50,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();

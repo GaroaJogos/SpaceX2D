@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Laser
   - Boss
+  - SpawnManager
   layers:
   - Default
   - TransparentFX

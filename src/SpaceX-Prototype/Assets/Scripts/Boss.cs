@@ -59,22 +59,29 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void _BossDead()
-    {
-        if (bossLife == 0)
-        {
-            Instantiate(_explosion, transform.position, Quaternion.identity);
-            SceneManager.LoadScene("TransitionToLevel02");
-            //Destroy(this.gameObject);
-        }
-    }
-
-    public IEnumerator BossShotSpawn() 
+    public IEnumerator BossShotSpawn()
     {
         while (true)
         {
             _BossAttack();
             yield return new WaitForSeconds(5.0f);
         }
+    }
+
+    public void _BossDead()
+    {
+        if (bossLife == 0)
+        {
+            Instantiate(_explosion, transform.position, Quaternion.identity);
+            StartCoroutine(BossDead());
+        }
+    }
+
+    private IEnumerator BossDead()
+    {
+        print("passo 1");
+        yield return new WaitForSeconds(5.0f);
+        print("passo 2");
+        SceneManager.LoadScene("TransitionToLevel02");
     }
 }

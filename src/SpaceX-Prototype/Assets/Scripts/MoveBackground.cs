@@ -5,16 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MoveBackground : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed;
+    
     private Vector3 _endx = new Vector3 (-27.5f, 0.0f, 0.1f);
+    private GameObject mini;
+    private MiniBoss miniboss;
+    private bool bossAlive;
+    private Boss boss;
+    private SpawnManager spawnManager;
+
     [SerializeField]
     private GameObject _miniboss;
-    private GameObject mini;
-    MiniBoss miniboss;
-    private bool bossAlive;
 
-    private Boss boss;
+    [SerializeField]
+    private float _speed;
 
     [SerializeField]
     private GameObject gameMaganer;
@@ -22,7 +25,7 @@ public class MoveBackground : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,6 @@ public class MoveBackground : MonoBehaviour
 
     private void BackgroundMovement()
     {
-        print(transform.position.x);
         transform.Translate(Vector3.left * _speed * Time.deltaTime);
 
         if (transform.position != _endx)
@@ -48,7 +50,8 @@ public class MoveBackground : MonoBehaviour
     {
         if (transform.position.x <= _endx.x)
         {
-            if (!bossAlive)
+            //if (!bossAlive)
+            if(mini == null)
             {
                 AudioSource audioLevel = gameMaganer.GetComponent<AudioSource>();
                 audioLevel.Stop();
@@ -68,12 +71,18 @@ public class MoveBackground : MonoBehaviour
                 if((miniboss!= null) && (miniboss.bossLife <= 0) )
                 {
                     miniboss._BossDead();
+                    spawnManager.SpawnAsteroide = false;
+                    spawnManager.SpawnEnemyShip = false;
+                    spawnManager.SpawnPowerupIcons = false;
                     bossAlive = false;
                 }
 
                 if ((boss != null) && (boss.bossLife <= 0) )
                 {
                     boss._BossDead();
+                    spawnManager.SpawnAsteroide = false;
+                    spawnManager.SpawnEnemyShip = false;
+                    spawnManager.SpawnPowerupIcons = false;
                     bossAlive = false;
                 }
             }
